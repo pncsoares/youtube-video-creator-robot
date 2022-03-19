@@ -1,0 +1,20 @@
+{
+  "name": "youtube-video-creator-robot",
+  "version": "1.0.0",
+  "description": "Four robots that work together to search texts, images, create video and publish on YouTube! 🤖",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/pncsoares/youtube-video-creator-robot.git"
+  },
+  "keywords": [],
+  "author": "Pedro Soares",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/pncsoares/youtube-video-creator-robot/issues"
+  },
+  "homepage": "https://github.com/pncsoares/youtube-video-creator-robot#readme"
+}
