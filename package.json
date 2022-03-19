@@ -2,7 +2,7 @@
   "name": "youtube-video-creator-robot",
   "version": "1.0.0",
   "description": "Four robots that work together to search texts, images, create video and publish on YouTube! 🤖",
-  "main": "index.js",
+  "main": "Index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -16,5 +16,8 @@
   "bugs": {
     "url": "https://github.com/pncsoares/youtube-video-creator-robot/issues"
   },
-  "homepage": "https://github.com/pncsoares/youtube-video-creator-robot#readme"
+  "homepage": "https://github.com/pncsoares/youtube-video-creator-robot#readme",
+  "dependencies": {
+    "readline-sync": "^1.4.10"
+  }
 }
