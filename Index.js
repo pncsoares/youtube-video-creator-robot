@@ -1,10 +1,13 @@
-const readline = require('readline-sync');
+import readline from 'readline-sync';
+import textRobot from './Robots/TextRobot.js';
 
 function start() {
     const content = {}
 
     content.searchTerm = askSearchTerm();
     content.prefix = askPrefix();
+
+    textRobot(content);
 
     function askSearchTerm() {
         return readline.question('Type a search term: ');
