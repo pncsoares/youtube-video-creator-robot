@@ -5,15 +5,19 @@ Four robots that work together to search texts, images, create video and publish
 Let's meet the robots:
 
 ## 📰 **Alex**, the text hunter
+
 His job is to search articles, histories and news about some topic using Google's API.
 
 ## 📷 **Mia**, the image hunter
+
 Mia search and downloads the best images related to the topic using Google's API.
 
 ## 📽️ **Tom**, the video maker
+
 Tom grab what Alex and Mia retrieved and creates a video with it.
 
 ## 📢 **Fred**, the video uploader
+
 Last but not least, because without Fred's work, everything else would have been in vain: upload the video to YouTube!
 
 # Technologies
