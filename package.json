@@ -2,7 +2,8 @@
   "name": "youtube-video-creator-robot",
   "version": "1.0.0",
   "description": "Four robots that work together to search texts, images, create video and publish on YouTube! 🤖",
-  "main": "Index.js",
+  "main": "./Index.js",
+  "type": "module",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
