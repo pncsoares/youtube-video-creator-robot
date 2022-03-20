@@ -24,12 +24,8 @@ Last but not least, because without Fred's work, everything else would have been
 
 # Technologies
 
-- [JavaScript]()
-- [Node]()
-- [IBM Watson]()
-- [Google API]()
-- [After Effects]()
-- [YouTube API]()
+- [JavaScript](https://developer.mozilla.org/en-US/docs/Web/JavaScript)
+- [Node](https://nodejs.org/en/docs/)
 
 # Setup
 
