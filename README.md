@@ -8,6 +8,8 @@ Let's meet the robots:
 
 His job is to search articles, histories and news about some topic using Google's API.
 
+[Documentation 📄](./Documentation/TextRobot.md)
+
 ## 📷 **Mia**, the image hunter
 
 Mia search and downloads the best images related to the topic using Google's API.
