@@ -34,6 +34,8 @@ To stop robots from messing up and taking over the world, we count on Lydia, the
 
 She is the best at her job, instructing all robots working together without flaws like a maestro playing music.
 
+[Documentation 📄](./Documentation/OrchestractorRobot.md)
+
 # Areas
 
 - Wikipedia
