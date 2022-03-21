@@ -1,6 +1,6 @@
 # YouTube Video Creator Robots
 
-Five robots that work together to search texts, images, use Artificial Intelligence to create content, manage state, make a video and publish on YouTube! 🤖
+Six robots that work together to search texts, images, use Artificial Intelligence to create content, manage state, make a video and publish on YouTube! 🤖
 
 Let's meet the robots:
 
@@ -9,6 +9,12 @@ Let's meet the robots:
 His job is to search articles, histories and news about some topic using Google's API.
 
 [Documentation 📄](./Documentation/TextRobot.md)
+
+## 💿 **Maria**, the state manager
+
+Her job is to manage application state, such as save and load data and export methods to be used by all the other robots.
+
+[Documentation 📄](./Documentation/StateRobot.md)
 
 ## 📷 **Mia**, the image hunter
 
