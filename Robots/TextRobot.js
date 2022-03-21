@@ -3,12 +3,13 @@ import sentenceBoundaryDetection from 'sbd';
 import NaturalLanguageUnderstandingV1 from 'watson-developer-cloud/natural-language-understanding/v1.js';
 import { saveState, loadState } from './StateRobot.js';
 
-const nlu = new NaturalLanguageUnderstandingV1({
-    url: process.env.WATSON_URL,
-    version: process.env.WATSON_API_VERSION,
-    username: process.env.WATSON_USERNAME,
-    password: process.env.WATSON_PASSWORD
-});
+// My account is not activated yet - I am facing an issue and I already reported it to the IBM support team.
+// const nlu = new NaturalLanguageUnderstandingV1({
+//     url: process.env.WATSON_URL,
+//     version: process.env.WATSON_API_VERSION,
+//     username: process.env.WATSON_USERNAME,
+//     password: process.env.WATSON_PASSWORD
+// });
 
 export default async function robot() {
     const content = loadState();
@@ -20,7 +21,7 @@ export default async function robot() {
     sanitizeRelatedContent(content);
     breakContentIntoSentences(content);
     limitSentences(content);
-    await fetchKeywordsOfAllSentences(content);
+    // await fetchKeywordsOfAllSentences(content);
 
     saveState(content);
 }
