@@ -1,8 +1,11 @@
+import 'dotenv/config'
 import readline from 'readline-sync';
 import textRobot from './Robots/TextRobot.js';
 
 async function start() {
-    const content = {}
+    const content = {
+        maxSentences: 7
+    }
 
     // content.searchTerm = askSearchTerm();
     // content.prefix = askPrefix();

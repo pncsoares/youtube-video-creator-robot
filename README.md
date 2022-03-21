@@ -22,12 +22,20 @@ Tom grab what Alex and Mia retrieved and creates a video with it.
 
 Last but not least, because without Fred's work, everything else would have been in vain: upload the video to YouTube!
 
+# Areas
+
+- Wikipedia
+- Artificial intelligence
+- Google
+- Youtube
+
 # Technologies
 
 - [JavaScript](https://developer.mozilla.org/en-US/docs/Web/JavaScript)
 - [Node](https://nodejs.org/en/docs/)
 - [Wikimedia REST API](https://www.mediawiki.org/wiki/Wikimedia_REST_API)
 - [Wikimedia REST API Swagger](https://en.wikipedia.org/api/rest_v1/)
+- [IBM Watson](https://www.ibm.com/watson/developer)
 
 # Setup
 
