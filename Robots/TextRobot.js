@@ -11,7 +11,7 @@ import { saveState, loadState } from './StateRobot.js';
 //     password: process.env.WATSON_PASSWORD
 // });
 
-export default async function robot() {
+export default async function textRobot() {
     const content = loadState();
 
     await prepareSearchTermToRequestWikipedia(content);

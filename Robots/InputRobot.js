@@ -1,7 +1,7 @@
 import readline from 'readline-sync';
 import { saveState } from './StateRobot.js';
 
-export default function robot() {
+export default function inputRobot() {
     const content = {
         maxSentences: 7
     }
