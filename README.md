@@ -26,6 +26,8 @@ Last but not least, because without Fred's work, everything else would have been
 
 - [JavaScript](https://developer.mozilla.org/en-US/docs/Web/JavaScript)
 - [Node](https://nodejs.org/en/docs/)
+- [Wikimedia REST API](https://www.mediawiki.org/wiki/Wikimedia_REST_API)
+- [Wikimedia REST API Swagger](https://en.wikipedia.org/api/rest_v1/)
 
 # Setup
 
