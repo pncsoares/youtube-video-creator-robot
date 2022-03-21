@@ -102,3 +102,7 @@ dist
 
 # TernJS port file
 .tern-port
+
+# Data directory and data files
+Data/
+Data/*
