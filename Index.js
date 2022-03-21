@@ -5,8 +5,12 @@ import textRobot from './Robots/TextRobot.js';
 async function start() {
     const content = {}
 
-    content.searchTerm = askSearchTerm();
-    content.prefix = askPrefix();
+    // content.searchTerm = askSearchTerm();
+    // content.prefix = askPrefix();
+
+    // dummy to speed up development
+    content.searchTerm = "Michael Jackson";
+    content.prefix = "The history of";
 
     await textRobot(content);
 
@@ -26,8 +30,6 @@ async function start() {
 
         return selectedPrefixText;
     }
-
-    console.log(content);
 }
 
 start();
