@@ -1,4 +1,3 @@
-import 'dotenv/config'
 import readline from 'readline-sync';
 import textRobot from './Robots/TextRobot.js';
 
