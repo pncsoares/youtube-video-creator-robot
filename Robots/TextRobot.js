@@ -1,6 +1,7 @@
 import got from 'got';
 import sentenceBoundaryDetection from 'sbd';
 import NaturalLanguageUnderstandingV1 from 'watson-developer-cloud/natural-language-understanding/v1.js';
+import { saveState, loadState } from './StateRobot.js';
 
 const nlu = new NaturalLanguageUnderstandingV1({
     url: process.env.WATSON_URL,
@@ -9,7 +10,9 @@ const nlu = new NaturalLanguageUnderstandingV1({
     password: process.env.WATSON_PASSWORD
 });
 
-export default async function robot(content) {
+export default async function robot() {
+    const content = loadState();
+
     await prepareSearchTermToRequestWikipedia(content);
     await fetchContentSummaryFromWikipedia(content);
     await fetchRelatedContentFromWikipedia(content);
@@ -18,6 +21,8 @@ export default async function robot(content) {
     breakContentIntoSentences(content);
     limitSentences(content);
     await fetchKeywordsOfAllSentences(content);
+
+    saveState(content);
 }
 
 async function prepareSearchTermToRequestWikipedia(content) {
@@ -29,13 +34,15 @@ function getWikipediaApiUrl() {
 }
 
 async function fetchContentSummaryFromWikipedia(content) {
-    const wikipediaApiRequestUrl = `${getWikipediaApiUrl()}/page/summary/${content.searchTerm}`;
+    const wikipediaApiUrl = getWikipediaApiUrl();
+    const wikipediaApiRequestUrl = `${wikipediaApiUrl}/page/summary/${content.searchTerm}`;
     const wikipediaResponse = await got(wikipediaApiRequestUrl);
     content.sourceSummaryOriginal = JSON.parse(wikipediaResponse.body);
 }
 
 async function fetchRelatedContentFromWikipedia(content) {
-    const wikipediaApiRequestUrl = `${getWikipediaApiUrl()}/page/related/${content.searchTerm}`;
+    const wikipediaApiUrl = getWikipediaApiUrl();
+    const wikipediaApiRequestUrl = `${wikipediaApiUrl}/page/related/${content.searchTerm}`;
     const wikipediaResponse = await got(wikipediaApiRequestUrl);
     content.sourceRelatedContentOriginal = JSON.parse(wikipediaResponse.body);
 }
