@@ -20,6 +20,8 @@ Her job is to manage application state, such as save and load data and export me
 
 Mia search and downloads the best images related to the topic using Google's API.
 
+[Documentation 📄](./Documentation/ImageRobot.md)
+
 ## 📽️ **Tom**, the video maker
 
 Tom grab what Alex and Mia retrieved and creates a video with it.
@@ -50,6 +52,7 @@ She is the best at her job, instructing all robots working together without flaw
 - [Wikimedia REST API](https://www.mediawiki.org/wiki/Wikimedia_REST_API)
 - [Wikimedia REST API Swagger](https://en.wikipedia.org/api/rest_v1/)
 - [IBM Watson](https://www.ibm.com/watson/developer)
+- [Google API](https://developers.google.com/apis-explorer/#p/customsearch/v1/search.cse.list)
 
 # Setup
 
