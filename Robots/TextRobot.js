@@ -1,10 +1,10 @@
 import got from 'got';
 
 export default async function robot(content) {
-    prepareSearchTermToRequestWikipedia(content);
-    fetchContentFromWikipedia(content);
+    await prepareSearchTermToRequestWikipedia(content);
+    await fetchContentFromWikipedia(content);
 
-    function prepareSearchTermToRequestWikipedia(content) {
+    async function prepareSearchTermToRequestWikipedia(content) {
         content.searchTerm = content.searchTerm.replace(' ', '_');
     }
 
