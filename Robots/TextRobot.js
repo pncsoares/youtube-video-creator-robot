@@ -17,6 +17,7 @@ export default async function robot(content) {
     sanitizeRelatedContent(content);
     breakContentIntoSentences(content);
     limitSentences(content);
+    await fetchKeywordsOfAllSentences(content);
 }
 
 async function prepareSearchTermToRequestWikipedia(content) {
@@ -74,6 +75,12 @@ function breakContentIntoSentences(content) {
 
 function limitSentences(content) {
     content.sentences = content.sentences.slice(0, content.maxSentences);
+}
+
+async function fetchKeywordsOfAllSentences(content) {
+    for (const sentence of content.sentences) {
+        sentence.keywords = await fetchWatsonAndReturnKeywords(sentence.text);
+    }
 }
 
 async function fetchWatsonAndReturnKeywords(sentence) {
