@@ -1,6 +1,6 @@
 # YouTube Video Creator Robots
 
-Four robots that work together to search texts, images, create video and publish on YouTube! 🤖
+Five robots that work together to search texts, images, use Artificial Intelligence to create content, manage state, make a video and publish on YouTube! 🤖
 
 Let's meet the robots:
 
@@ -20,7 +20,13 @@ Tom grab what Alex and Mia retrieved and creates a video with it.
 
 ## 📢 **Fred**, the video uploader
 
-Last but not least, because without Fred's work, everything else would have been in vain: upload the video to YouTube!
+To finish and share all the hard work to the human specie, Fred has one job: upload the video to YouTube!
+
+## 👩‍🏭 **Lydia**, the orchestrator
+
+To stop robots from messing up and taking over the world, we count on Lydia, the orchestrator.
+
+She is the best at her job, instructing all robots working together without flaws like a maestro playing music.
 
 # Areas
 
