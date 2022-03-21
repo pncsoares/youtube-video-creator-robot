@@ -6,8 +6,9 @@
 content: {
     searchTerm: "",
     prefix: "",
-    sourceOriginalContent: "",
-    sourceSanitizedContent: "",
+    sourceSummaryOriginal: "",
+    sourceRelatedContentOriginal: "",
+    sourceSanitizedContent: [""],
     sentences: [
         {
             text: "",
