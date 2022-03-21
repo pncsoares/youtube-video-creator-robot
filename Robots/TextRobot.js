@@ -30,14 +30,12 @@ function getWikipediaApiUrl() {
 
 async function fetchContentSummaryFromWikipedia(content) {
     const wikipediaApiRequestUrl = `${getWikipediaApiUrl()}/page/summary/${content.searchTerm}`;
-    console.log('wikipediaApiRequestUrl', wikipediaApiRequestUrl);
     const wikipediaResponse = await got(wikipediaApiRequestUrl);
     content.sourceSummaryOriginal = JSON.parse(wikipediaResponse.body);
 }
 
 async function fetchRelatedContentFromWikipedia(content) {
     const wikipediaApiRequestUrl = `${getWikipediaApiUrl()}/page/related/${content.searchTerm}`;
-    console.log('wikipediaApiRequestUrl', wikipediaApiRequestUrl);
     const wikipediaResponse = await got(wikipediaApiRequestUrl);
     content.sourceRelatedContentOriginal = JSON.parse(wikipediaResponse.body);
 }
