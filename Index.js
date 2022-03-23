@@ -5,8 +5,8 @@ import { loadState } from './Robots/StateRobot.js';
 import imageRobot from './Robots/ImageRobot.js'
 
 async function start() {
-    inputRobot();
-    await textRobot();
+    // inputRobot();
+    // await textRobot();
     await imageRobot();
 
     const content = loadState();

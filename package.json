@@ -20,6 +20,7 @@
   "homepage": "https://github.com/pncsoares/youtube-video-creator-robot#readme",
   "dependencies": {
     "dotenv": "^16.0.0",
+    "googleapis": "^97.0.0",
     "got": "^12.0.2",
     "readline-sync": "^1.4.10",
     "sbd": "^1.0.19",
