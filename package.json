@@ -22,6 +22,7 @@
     "dotenv": "^16.0.0",
     "googleapis": "^97.0.0",
     "got": "^12.0.2",
+    "image-downloader": "^4.1.0",
     "readline-sync": "^1.4.10",
     "sbd": "^1.0.19",
     "watson-developer-cloud": "^4.0.1"
