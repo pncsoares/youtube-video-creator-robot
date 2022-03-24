@@ -14,6 +14,7 @@ export default async function imageRobot() {
     await fetchImagesToAllSentences(content);
     await downloadAllImages(content);
     await convertAllImages(content);
+    await createAllImagesSentences(content);
 
     saveState(content);
 }
