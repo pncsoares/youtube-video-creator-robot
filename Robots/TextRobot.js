@@ -14,9 +14,10 @@ import { saveState, loadState } from './StateRobot.js';
 export default async function textRobot() {
     const content = loadState();
 
-    await prepareSearchTermToRequestWikipedia(content);
+    replaceSearchTermSpacesWithUnderscores(content);
     await fetchContentSummaryFromWikipedia(content);
     await fetchRelatedContentFromWikipedia(content);
+    replaceSearchTermUnderscoresWithSpaces(content);
     sanitizeSummary(content);
     sanitizeRelatedContent(content);
     breakContentIntoSentences(content);
@@ -26,8 +27,12 @@ export default async function textRobot() {
     saveState(content);
 }
 
-async function prepareSearchTermToRequestWikipedia(content) {
+async function replaceSearchTermSpacesWithUnderscores(content) {
     content.searchTerm = content.searchTerm.replace(' ', '_');
+}
+
+async function replaceSearchTermUnderscoresWithSpaces(content) {
+    content.searchTerm = content.searchTerm.replace('_', ' ');
 }
 
 function getWikipediaApiUrl() {
