@@ -86,7 +86,7 @@ async function convertAllImages(content) {
 
 async function convertImage(sentenceIndex) {
     return new Promise((resolve, reject) => {
-        
+
         // if the google images api downloads a GIF, we will take only the first frame
         // we will use the .png[0] to do that
         const inputFile = `${imagesPath}/${sentenceIndex}-original.png[0]`;
@@ -119,8 +119,66 @@ async function convertImage(sentenceIndex) {
                     return reject(error);
                 }
 
-                console.log(`> [video-robot] Image converted: ${outputFile}`);
+                console.log(`> [image-robot] Image converted: ${outputFile}`);
                 resolve();
             });
+    });
+}
+
+async function createAllImagesSentences(content) {
+    for (let sentenceIndex = 0; sentenceIndex < content.sentences.length; sentenceIndex++) {
+        await createImageSentence(sentenceIndex, content.sentences[sentenceIndex].text);
+    }
+}
+
+async function createImageSentence(sentenceIndex, sentenceText) {
+    return new Promise((resolve, reject) => {
+        const outputFile = `${imagesPath}/${sentenceIndex}-sentence.png`;
+
+        const templateSettings = {
+            0: {
+                size: '1920x400',
+                gravity: 'center'
+            },
+            1: {
+                size: '1920x1080',
+                gravity: 'center'
+            },
+            2: {
+                size: '800x1080',
+                gravity: 'west'
+            },
+            3: {
+                size: '1920x400',
+                gravity: 'center'
+            },
+            4: {
+                size: '1920x1080',
+                gravity: 'center'
+            },
+            5: {
+                size: '800x1080',
+                gravity: 'west'
+            },
+            6: {
+                size: '1920x400',
+                gravity: 'center'
+            }
+        }
+
+        gm().out('-size', templateSettings[sentenceIndex].size)
+            .out('-gravity', templateSettings[sentenceIndex].gravity)
+            .out('-background', 'transparent')
+            .out('-fill', 'white')
+            .out('-kerning', '-1')
+            .out(`caption:${sentenceText}`)
+            .write(outputFile, (error) => {
+                if (error) {
+                    return reject(error);
+                }
+
+                console.log(`> [image-robot] Sentence created: ${outputFile}`);
+                resolve();
+            })
     });
 }
