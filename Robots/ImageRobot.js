@@ -1,4 +1,5 @@
 import google from 'googleapis';
+import imageDownloader from 'image-downloader';
 import { loadState, saveState } from './StateRobot.js';
 
 const customSearch = google.google.customsearch('v1');
@@ -7,6 +8,7 @@ export default async function imageRobot() {
     const content = loadState();
 
     await fetchImagesToAllSentences(content);
+    await downloadAllImages(content);
 
     saveState(content);
 }
@@ -35,4 +37,38 @@ async function fetchGoogleAndReturnImagesLinks(query) {
     });
 
     return imagesUrl;
+}
+
+async function downloadAllImages(content) {
+    content.downloadedImages = [];
+
+    for (let sentenceIndex = 0; sentenceIndex < content.sentences.length; sentenceIndex++) {
+        const images = content.sentences[sentenceIndex].images;
+
+        for (let imageIndex = 0; imageIndex < images.length; imageIndex++) {
+            const imageUrl = images[imageIndex];
+
+            try {
+                if (content.downloadedImages.includes(imageUrl)) {
+                    throw new Error('Image already downloaded!');
+                }
+
+                await downloadAndSave(imageUrl, `${sentenceIndex}-original.png`);
+                content.downloadedImages.push(imageUrl);
+
+                console.log(`> [${sentenceIndex}][${imageIndex}] Image downloaded successfully: ${imageUrl}`);
+                break;
+            }
+            catch (error) {
+                console.log(`> [${sentenceIndex}][${imageIndex}] Error downloading (${imageUrl}): ${error}`);
+            }
+        }
+    }
+}
+
+async function downloadAndSave(url, filename) {
+    return imageDownloader.image({
+        url: url,
+        dest: `./Images/${filename}`
+    });
 }
