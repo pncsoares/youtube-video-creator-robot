@@ -103,6 +103,9 @@ dist
 # TernJS port file
 .tern-port
 
+# MacOS files
+.DS_Store
+
 # Data directory and data files
 Data/
 Data/*
@@ -110,3 +113,13 @@ Data/*
 # Downloaded images
 Images/*.png
 Images/*.jpg
+
+# Scripts
+Scripts/*.js
+
+# Videos
+Videos/*.mov
+
+# After Effects
+Adobe After Effects Auto-Save
+template.aep Logs
