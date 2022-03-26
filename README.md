@@ -33,6 +33,8 @@ Tom grab what Alex and Mia collected and creates a video with it, using After Ef
 
 To finish and share all the hard work to the human specie, Fred has one job: upload the video to YouTube!
 
+[Documentation 📄](./Documentation/VideoUploaderRobot.md)
+
 ## 👩‍🏭 **Lydia**, the orchestrator
 
 To stop robots from messing up and taking over the world, we count on Lydia, the orchestrator.
@@ -78,6 +80,16 @@ Go to the project directory
 
 ```bash
   cd youtube-video-creator-robot
+```
+
+## How to execute
+
+1. Open terminal
+1. Go to the projects root folder `youtube-video-creator-robot`
+1. Run the command `npm i` to install dependencies
+1. Run the following command to start the robots:
+```
+  node Index.js
 ```
 
 ## Credentials

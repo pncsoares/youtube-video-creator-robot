@@ -18,8 +18,11 @@ WATSON_USERNAME=""
 WATSON_PASSWORD=""
 # Google
 GOOGLE_API_KEY=""
-GOOGLE_API_KEY=""
 GOOGLE_SEARCH_ENGINE_ID=""
+# Google YouTube API
+YOUTUBE_CLIENT_ID=""
+YOUTUBE_CLIENT_SECRET=""
+YOUTUBE_REDIRECT_URL="http://localhost:5000/oauth2callback"
 ```
 
 *Adapt with your credentials*
