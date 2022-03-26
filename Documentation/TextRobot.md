@@ -20,3 +20,23 @@ content: {
     ]
 }
 ```
+
+## External packages
+
+### `import got from 'got';`
+
+Human-friendly and powerful HTTP request library for Node.js
+
+[Documentation 📄](https://github.com/sindresorhus/got#readme)
+
+### `import sentenceBoundaryDetection from 'sbd';`
+
+Sentence Boundary Detection in javascript for node. 
+
+[Documentation 📄](https://github.com/Tessmore/sbd)
+
+### `import NaturalLanguageUnderstandingV1 from 'watson-developer-cloud/natural-language-understanding/v1.js';`
+
+Node.js library to access IBM Watson services.
+
+[Documentation 📄](https://github.com/watson-developer-cloud/node-sdk#readme)
