@@ -8,6 +8,8 @@ const oAuth2 = google.auth.OAuth2;
 const youtube = google.youtube({ version: 'v3' });
 
 export default async function videoUploaderRobot() {
+    console.info('> [🤖 uploader-robot] Starting...');
+
     const content = loadState();
 
     await authenticate();
@@ -30,7 +32,7 @@ async function authenticate() {
             const app = express();
     
             const server = app.listen(port, () => {
-                console.log(`> Listening on http://localhost:${port}`);
+                console.log(`> [🤖 uploader-robot] Listening on http://localhost:${port}`);
     
                 resolve({
                     app,
@@ -56,12 +58,12 @@ async function authenticate() {
             scope: ['https://www.googleapis.com/auth/youtube']
         });
     
-        console.log(`> Please give your consent: ${consentUrl}`);
+        console.log(`> [🤖 uploader-robot] Please give your consent: ${consentUrl}`);
     }
     
     async function waitForGoogleCallback(webServer) {
         return new Promise((resolve, reject) => {
-            console.log('> Waiting for user consent...');
+            console.log('> [🤖 uploader-robot] Waiting for user consent...');
     
             webServer.app.get('/oauth2callback', (req, res) => {
                 const authCode = req.query.code;
@@ -129,17 +131,19 @@ async function uploadVideo(content) {
         }
     };
 
+    console.log('> [🤖 uploader-robot] Staring to upload the video to YouTube!');
+
     const youtubeResponse = await youtube.videos.insert(requestParameters, {
         onUploadProgress: onUploadProgress
     });
 
-    console.log(`> Video available at: https://youtu.be/${youtubeResponse.data.id}`);
+    console.log(`> [🤖 uploader-robot] Video available at: https://youtu.be/${youtubeResponse.data.id}`);
 
     return youtube.data;
 
     function onUploadProgress(event) {
         const progress = Math.round((event.bytesRead / videoFileSize) * 100);
-        console.log(`> ${progress}% completed`);
+        console.log(`> [🤖 uploader-robot] ${progress}% completed`);
     }
 }
 
@@ -155,6 +159,9 @@ async function uploadThumbnail(videoInformation) {
         }
     };
 
+    console.log('> [🤖 uploader-robot] Staring to upload the thumbnail to YouTube!');
+
     const youtubeResponse = await youtube.thumbnails.set(requestParameters);
-    console.log('> Thumbnail uploaded!');
+
+    console.log('> [🤖 uploader-robot] Thumbnail uploaded!');
 }

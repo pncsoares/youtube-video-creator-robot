@@ -9,6 +9,8 @@ const rootPath = path.resolve(__dirname, '..');
 const imagesPath = './Images';
 
 export default async function videoRobot() {
+    console.info('> [🤖 video-robot] Starting...');
+
     const content = loadState();
 
     await convertAllImages(content);
@@ -62,7 +64,7 @@ async function convertImage(sentenceIndex) {
                     return reject(error);
                 }
 
-                console.log(`> [video-robot] Image converted: ${outputFile}`);
+                console.log(`> [🤖 video-robot] Image converted: ${outputFile}`);
                 resolve();
             });
     });
@@ -121,7 +123,7 @@ async function createImageSentence(sentenceIndex, sentenceText) {
                     return reject(error);
                 }
 
-                console.log(`> [video-robot] Sentence created: ${outputFile}`);
+                console.log(`> [🤖 video-robot] Sentence created: ${outputFile}`);
                 resolve();
             })
     });
@@ -136,7 +138,7 @@ async function createVideoThumbnail() {
                     return reject(error);
                 }
 
-                console.log('> [video-robot] Creating video thumbnail');
+                console.log('> [🤖 video-robot] Video thumbnail created successfully');
                 resolve();
             });
     });
@@ -155,7 +157,7 @@ async function renderVideoWithAfterEffects() {
         
         const targetFilePath = `${rootPath}/Videos/output.mov`;
 
-        console.log('> Starting After Effects');
+        console.log('> [🤖 video-robot] Starting After Effects');
 
         const aeRender = spawn(aeRenderFilePath, [
             '-comp', 'main',
@@ -168,7 +170,7 @@ async function renderVideoWithAfterEffects() {
         });
 
         aeRender.on('close', () => {
-            console.log('> After Effects closed');
+            console.log('> [🤖 video-robot] After Effects closed');
             resolve();
         });
     });
