@@ -2,7 +2,7 @@
 import express from 'express';
 import google from 'googleapis/google';
 import fs from 'fs';
-import { loadState, saveState } from './StateRobot.js';
+import { loadState } from './StateRobot.js';
 
 const oAuth2 = google.auth.OAuth2;
 const youtube = google.youtube({ version: 'v3' });
@@ -12,8 +12,7 @@ export default async function videoUploaderRobot() {
 
     await authenticate();
     const videoInformation = await uploadVideo(content);
-
-    saveState(content);
+    await uploadThumbnail(videoInformation);
 }
 
 async function authenticate() {
@@ -142,4 +141,20 @@ async function uploadVideo(content) {
         const progress = Math.round((event.bytesRead / videoFileSize) * 100);
         console.log(`> ${progress}% completed`);
     }
+}
+
+async function uploadThumbnail(videoInformation) {
+    const videoId = videoInformation.id;
+    const videoThumbnailFilePath = './Images/youtube-thumbnail.jpg';
+
+    const requestParameters = {
+        videoId: videoId,
+        media: {
+            mimeType: 'image/jpeg',
+            body: fs.createReadStream(videoThumbnailFilePath)
+        }
+    };
+
+    const youtubeResponse = await youtube.thumbnails.set(requestParameters);
+    console.log('> Thumbnail uploaded!');
 }
