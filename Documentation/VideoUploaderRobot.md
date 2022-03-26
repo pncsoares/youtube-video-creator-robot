@@ -15,3 +15,9 @@ Fast, unopinionated, minimalist web framework for node.
 Google's officially supported Node.js client library for accessing Google APIs. Support for authorization and authentication with OAuth 2.0, API Keys and JWT (Service Tokens) is included. 
 
 [Documentation 📄](https://github.com/googleapis/google-api-nodejs-client#readme)
+
+### `import fs from 'fs';`
+
+fs enables interacting with the file system in a way modeled on standard POSIX functions.
+
+[Documentation 📄](https://nodejs.org/api/fs.html)
