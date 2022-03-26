@@ -80,6 +80,12 @@ Go to the project directory
   cd youtube-video-creator-robot
 ```
 
+## Credentials
+
+Read the following documentation so you can run the application locally
+
+[Documentation 📄](./Documentation/Credentials.md)
+
 # License
 
 MIT
