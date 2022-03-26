@@ -12,6 +12,8 @@ import { saveState, loadState } from './StateRobot.js';
 // });
 
 export default async function textRobot() {
+    console.info('> [🤖 text-robot] Starting...');
+
     const content = loadState();
 
     replaceSearchTermSpacesWithUnderscores(content);
@@ -40,6 +42,8 @@ function getWikipediaApiUrl() {
 }
 
 async function fetchContentSummaryFromWikipedia(content) {
+    console.info('> [🤖 text-robot] Fetching content summary from Wikipedia');
+
     const wikipediaApiUrl = getWikipediaApiUrl();
     const wikipediaApiRequestUrl = `${wikipediaApiUrl}/page/summary/${content.searchTerm}`;
     const wikipediaResponse = await got(wikipediaApiRequestUrl);
@@ -47,10 +51,14 @@ async function fetchContentSummaryFromWikipedia(content) {
 }
 
 async function fetchRelatedContentFromWikipedia(content) {
+    console.info('> [🤖 text-robot] Fetching related content from Wikipedia');
+
     const wikipediaApiUrl = getWikipediaApiUrl();
     const wikipediaApiRequestUrl = `${wikipediaApiUrl}/page/related/${content.searchTerm}`;
     const wikipediaResponse = await got(wikipediaApiRequestUrl);
     content.sourceRelatedContentOriginal = JSON.parse(wikipediaResponse.body);
+
+    console.info('> [🤖 text-robot] All content fetched successfully');
 }
 
 function sanitizeSummary(content) {
@@ -89,8 +97,14 @@ function limitSentences(content) {
 }
 
 async function fetchKeywordsOfAllSentences(content) {
+    console.info('> [🤖 text-robot] Starting to fetch keyword from Watson...');
+
     for (const sentence of content.sentences) {
+        console.info(`> [🤖 text-robot] Sentence: "${sentence.text}"`);
+
         sentence.keywords = await fetchWatsonAndReturnKeywords(sentence.text);
+
+        console.info(`> [🤖 text-robot] Keywords: ${sentence.keywords.join(', ')}`);
     }
 }
 

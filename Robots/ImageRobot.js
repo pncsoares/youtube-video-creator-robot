@@ -7,6 +7,8 @@ const customSearch = google.google.customsearch('v1');
 const imagesPath = './Images';
 
 export default async function imageRobot() {
+    console.info('> [🤖 image-robot] Starting...');
+
     const content = loadState();
 
     await fetchImagesToAllSentences(content);
@@ -19,6 +21,9 @@ async function fetchImagesToAllSentences(content) {
     for (const sentence of content.sentences) {
         if (sentence.keywords[0]) {
             const query = `${content.searchTerm} ${sentence.keywords[0]}`;
+
+            console.info(`> [🤖 image-robot] Querying Google Images with: "${query}"`);
+
             sentence.images = await fetchGoogleAndReturnImagesLinks(query);
             sentence.googleSearchQuery = query;
         }
@@ -52,17 +57,17 @@ async function downloadAllImages(content) {
 
             try {
                 if (content.downloadedImages.includes(imageUrl)) {
-                    throw new Error('Image already downloaded!');
+                    throw new Error('> [🤖 image-robot] Image already downloaded!');
                 }
 
                 await downloadAndSave(imageUrl, `${sentenceIndex}-original.png`);
                 content.downloadedImages.push(imageUrl);
 
-                console.log(`> [${sentenceIndex}][${imageIndex}] Image downloaded successfully: ${imageUrl}`);
+                console.log(`> [🤖 image-robot] [${sentenceIndex}][${imageIndex}] Image downloaded successfully: ${imageUrl}`);
                 break;
             }
             catch (error) {
-                console.log(`> [${sentenceIndex}][${imageIndex}] Error downloading (${imageUrl}): ${error}`);
+                console.log(`> [🤖 image-robot] [${sentenceIndex}][${imageIndex}] Error downloading (${imageUrl}): ${error}`);
             }
         }
     }
