@@ -4,27 +4,30 @@ Six robots that work together to search texts, images, use Artificial Intelligen
 
 Let's meet the robots:
 
-## 📰 **Alex**, the text hunter
-
-His job is to search articles, histories and news about some topic using Google's API.
-
-[Documentation 📄](./Documentation/TextRobot.md)
-
 ## 💿 **Maria**, the state manager
 
 Her job is to manage application state, such as save and load data and export methods to be used by all the other robots.
 
 [Documentation 📄](./Documentation/StateRobot.md)
 
+## 📰 **Alex**, the text hunter
+
+His job is to search articles, histories and news about some topic using Google's API.
+He uses Watson IA from IBM to search keywords for the given texts.
+
+[Documentation 📄](./Documentation/TextRobot.md)
+
 ## 📷 **Mia**, the image hunter
 
-Mia search and downloads the best images related to the topic using Google's API.
+Mia search and downloads the best images related to the topic using Google Images API.
 
 [Documentation 📄](./Documentation/ImageRobot.md)
 
 ## 📽️ **Tom**, the video maker
 
-Tom grab what Alex and Mia retrieved and creates a video with it.
+Tom grab what Alex and Mia collected and creates a video with it, using After Effects.
+
+[Documentation 📄](./Documentation/VideoRobot.md)
 
 ## 📢 **Fred**, the video uploader
 
@@ -53,6 +56,7 @@ She is the best at her job, instructing all robots working together without flaw
 - [Wikimedia REST API Swagger](https://en.wikipedia.org/api/rest_v1/)
 - [IBM Watson](https://www.ibm.com/watson/developer)
 - [Google API](https://developers.google.com/apis-explorer/#p/customsearch/v1/search.cse.list)
+- [After Effects](https://usermanual.wiki/Pdf/AfterEffectsCS6ScriptingGuide.141598726/view)
 
 # Setup
 

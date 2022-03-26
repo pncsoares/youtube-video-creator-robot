@@ -1,7 +1,10 @@
 import gm from 'gm';
-import { loadState, saveState } from './StateRobot.js';
+import spawn from 'child_process/spawn';
+import path from 'path';
+import { loadState, saveScript, saveState } from './StateRobot.js';
 
 const imageMagick = gm.subClass({ imageMagick: true });
+const rootPath = path.resolve(__dirname, '..');
 
 const imagesPath = './Images';
 
@@ -11,6 +14,8 @@ export default async function videoRobot() {
     await convertAllImages(content);
     await createAllImagesSentences(content);
     await createVideoThumbnail();
+    await createAfterEffectsScript(content);
+    await renderVideoWithAfterEffects();
 
     saveState(content);
 }
@@ -134,5 +139,37 @@ async function createVideoThumbnail() {
                 console.log('> [video-robot] Creating video thumbnail');
                 resolve();
             });
+    });
+}
+
+async function createAfterEffectsScript(content) {
+    saveScript(content);
+}
+
+async function renderVideoWithAfterEffects() {
+    return new Promise((resolve, reject) => {
+        
+        // this paths will be improved in future commits
+        const aeRenderFilePath = '/Applications/Adobe After Effects CC 2019/aerender';
+        const templateFilePath = `${rootPath}/templates/1/template.aep`;
+        
+        const targetFilePath = `${rootPath}/Videos/output.mov`;
+
+        console.log('> Starting After Effects');
+
+        const aeRender = spawn(aeRenderFilePath, [
+            '-comp', 'main',
+            '-project', templateFilePath,
+            '-output', targetFilePath
+        ]);
+
+        aeRender.stdout.on('data', (data) => {
+            process.stdout.write(data);
+        });
+
+        aeRender.on('close', () => {
+            console.log('> After Effects closed');
+            resolve();
+        });
     });
 }
