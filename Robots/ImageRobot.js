@@ -18,15 +18,27 @@ export default async function imageRobot() {
 }
 
 async function fetchImagesToAllSentences(content) {
-    for (const sentence of content.sentences) {
-        if (sentence.keywords[0]) {
-            const query = `${content.searchTerm} ${sentence.keywords[0]}`;
+    for (let sentenceIndex = 0; sentenceIndex < content.sentences.length; sentenceIndex++) {
+        const sentence = content.sentences[sentenceIndex];
+        let query;
 
-            console.info(`> [🤖 image-robot] Querying Google Images with: "${query}"`);
-
-            sentence.images = await fetchGoogleAndReturnImagesLinks(query);
-            sentence.googleSearchQuery = query;
+        if (!sentence.keywords[0]) {
+            continue;
         }
+
+        // The first image will be the thumbnail and, to find the best image, we should search only for the search term
+        // This way, we will only find images 100% related to the context of the video
+        if (sentenceIndex === 0) {
+            query = `${content.searchTerm}`;
+        }
+        else {
+            query = `${content.searchTerm} ${sentence.keywords[0]}`;
+        }
+
+        console.info(`> [🤖 image-robot] Querying Google Images with: "${query}"`);
+
+        sentence.images = await fetchGoogleAndReturnImagesLinks(query);
+        sentence.googleSearchQuery = query;
     }
 }
 
