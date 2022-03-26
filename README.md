@@ -82,7 +82,7 @@ Go to the project directory
   cd youtube-video-creator-robot
 ```
 
-## Credentials
+## Configure credentials
 
 Read the following documentation so you can run the application locally.
 
